@@ -3,6 +3,9 @@ public class ForestRunner {
     public static void main(String []args){
         Scanner input = new Scanner(System.in);
         Direction toGo = new Direction();
+        int numKeys = 0;
+        boolean key1Picked = false;
+        boolean insideTavern = false;
         System.out.println("Greetings traveler!");
         for(int j = 4; j >= 1; j--){
 
@@ -23,7 +26,35 @@ public class ForestRunner {
             String direction1 = input.nextLine();
             if(direction1.toUpperCase().equals("N")){
                 System.out.println("The Tavern:\n\nYou see a very cozy tavern in a clearing in the forest.  The door is slightly open.  Would you like to go in? (y/n)");
-
+                String tavern = input.nextLine();
+                if(tavern.toUpperCase().equals("Y")){
+                    insideTavern = true;
+                    System.out.println("Inside: \n\nYou see a fireplace with some firewood burning inside.  The room is dim, but you see a key on the table.  Would you like to pick it up?(y/n)");
+                    String pickKey1 = input.nextLine();
+                    if(pickKey1.toUpperCase().equals("Y")){
+                        numKeys = 1;
+                        key1Picked = true;
+                        System.out.println("You have picked up the key.");
+                        System.out.println();
+                        System.out.println("Shall we exit the cabin?(y, n)");
+                        String exitCabin = input.nextLine();
+                        if(exitCabin.toUpperCase().equals("Y")){
+                            System.out.println("Outside: ");
+                        }
+                    }
+                    else if(pickKey1.toUpperCase().equals("N")){
+                        numKeys = 0;
+                        key1Picked = false;
+                        System.out.println("Shall we exit the cabin?");
+                    }
+                    else{
+                        System.out.println("I don't understand");
+                    }
+                }else if(tavern.toUpperCase().equals("N")){
+                    toGo.tavernDirection();
+                }else{
+                    System.out.println("I don't understand.  Speak in a language I understand ");
+                }
             }
 
             else if(direction1.toUpperCase().equals("E")){
