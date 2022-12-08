@@ -41,17 +41,16 @@ public class ForestRunner {
             System.out.println("Good choice!");
 
             /* First choice about the direction the user has to go */
-            String direction1 = input.nextLine();
             toGo.sayDirection();
+            String direction1 = input.nextLine();
             direction1 = input.nextLine();
 
             /*This means that the user will continue North */
 
 
-            String tavern = null;
             if (direction1.toUpperCase().equals("N")) {
                 System.out.println("The Tavern:\n\nYou see a very cozy tavern in a clearing in the forest.  The door is slightly open.  Would you like to go in? (y/n)");
-                tavern = input.nextLine();
+                String tavern = input.nextLine();
 
                 /* Whether to enter the tavern or not */
 
@@ -93,7 +92,7 @@ public class ForestRunner {
                         }
                         /* This is if the user decides to go south */
 
-                        if (!southOrNot.toUpperCase().equals("Y")) {
+                        if (southOrNot.toUpperCase().equals("Y")) {
                             System.out.println("The Center: ");
                             System.out.println("Now we shall head west");
 
@@ -112,11 +111,14 @@ public class ForestRunner {
                                     int luckyNumber = input.nextInt();
                                     game1.moneyEarned(luckyNumber);
                                     System.out.println(game1.toString());
+                                    System.out.println("Thanks!");
+
                                 } else if (whichGame == 2) {
                                     System.out.println("Now what will be your lucky number?");
                                     int luckyNumber2 = input.nextInt();
                                     game2.moneyEarned(luckyNumber2);
                                     System.out.println(game2.toString());
+                                    System.out.println("Thanks!");
                                 } else {
                                     System.out.println("You have failed to enter a simple number and therefore will not play.  Your money is 0.  Have a nice day.");
                                 }
@@ -130,7 +132,7 @@ public class ForestRunner {
 
                             }
                         }
-                        if (!southOrNot.toUpperCase().equals("N")) {
+                        else if (southOrNot.toUpperCase().equals("N")) {
                             System.out.println("Uh Oh! You have been turned into a frog by The Witch.  Thank you for playing.");
                         }
 
@@ -140,32 +142,30 @@ public class ForestRunner {
                     System.out.println("Shall we exit the cabin?");
                 } else {
                     System.out.println("I don't understand");
+
                 }
-            } else if (tavern.toUpperCase().equals("N")) {
-                toGo.tavernDirection();
-            } else {
-                System.out.println("I don't understand.  Speak in a language I understand ");
-            }
-        } else if (direction1.toUpperCase().equals("E")) {
-            System.out.println("The Great Oak: \n\nYou follow a path and approach a very large oak tree.  As you observe the tree, you find some branches that stoop down");
-            System.out.println("You decide you are an adrenaline seeker, you decide to climb the tree and fall down. Very unfortunate.  Try again next time.");
+                if (tavern.toUpperCase().equals("N")) {
+                    toGo.tavernDirection();
+                }
+            } else if (direction1.toUpperCase().equals("E")) {
+                System.out.println("The Great Oak: \n\nYou follow a path and approach a very large oak tree.  As you observe the tree, you find some branches that stoop down");
+                System.out.println("You decide you are an adrenaline seeker, you decide to climb the tree and fall down. Very unfortunate.  Try again next time.");
 
 
-        } else if (direction1.toUpperCase().equals("S")) {
-            System.out.println("You follow a trail and get lost in the woods.  You encounter a group of trolls and decide to live a long and happy life with them.");
+            } else if (direction1.toUpperCase().equals("S")) {
+                System.out.println("You follow a trail and get lost in the woods.  You encounter a group of trolls and decide to live a long and happy life with them.");
 
 
-        } else if (direction1.toUpperCase().equals("W")) {
-            System.out.println("Uh oh.  You have been recruited by the Army Of Gnomes.  You try to escape, and it was a brave effort, but there is no escape from the Gnomes.  Thank you for playing");
-        }
-
-    else if (cont.toUpperCase().equals("N")) {
+            } else if (direction1.toUpperCase().equals("W")) {
+                System.out.println("Uh oh.  You have been recruited by the Army Of Gnomes.  You try to escape, and it was a brave effort, but there is no escape from the Gnomes.  Thank you for playing");
+            } else if (cont.toUpperCase().equals("N")) {
                 System.out.println("Too Bad. You've been eaten by the tree ogres.  Have a better game next time. ");
 
-                }
+            }
 
 
         }
 
 
     }
+}
